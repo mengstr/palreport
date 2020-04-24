@@ -4,7 +4,9 @@
 # palreport.sh - Lists the sizes of all functions in a PDP-8 pal file
 # For more info see https://github.com/SmallRoomLabs/palreport
 #
-# Copyrght (c) 2020 Mats Engstrom - released under the MIT licnese
+# Copyright (c) 2020 Mats Engstrom - released under the MIT licnese
+# 
+# Version 1.0 - April 24 2020 - First release
 #
 
 reAz='[a-zA-Z]'
@@ -38,7 +40,7 @@ while IFS= read -r line; do
     if [ "$mode" == "3" ]; then
         tmp="${line:6:5}"
         if [[ $tmp =~ $re09 ]]; then 
-            ADDR1=$(echo $tmp | sed 's/^0*//')
+            ADDR1=$(echo $tmp | sed 's/[^0-9]*//')
             ADDR2=$ADDR1
             mode=4
             continue
@@ -57,7 +59,7 @@ while IFS= read -r line; do
             hole=$(( $((8#$ADDR1)) - $((8#$ADDR2HOLD))  - 1 ))
             if [ "$hole" -gt 0 ] && [ "$ADDR2HOLD" != "" ]; then printf " followed by %d unused bytes" $hole; fi
             printf "\n" 
-            printf "%04d  %-6s %4d bytes"  $ADDR1 $LABEL $(( $((8#$ADDR2)) - $((8#$ADDR1)) + 1 )) 
+            printf "%04o  %-6s %4d bytes"  $ADDR1 $LABEL $(( $((8#$ADDR2)) - $((8#$ADDR1)) + 1 )) 
             ADDR2HOLD=$ADDR2
             LABEL=""
             ADDR1=""
