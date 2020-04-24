@@ -1,4 +1,4 @@
-# palreport
+# palreport ![C/C++ CI](https://github.com/SmallRoomLabs/palreport/workflows/C/C++%20CI/badge.svg)
 Lists sizes of the functions in a listing file from Palbart (PDP-8)
 
 ## Usage
