@@ -29,7 +29,7 @@ the script like `./palreport.sh < mycode.lst`
 
 ## Sample output
 
-The output looks like this. Eash line has the starting address of the
+The output looks like this. Each line has the starting address of the
 function, followed by the function name and the length in (decimal) of the
 function. If there's some unused space between this function and the next
 that will be reported as "..followed by..."
